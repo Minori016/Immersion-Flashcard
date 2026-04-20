@@ -1,0 +1,704 @@
+[
+    {
+        "suffix": "ます",
+        "replacement": "る",
+        "type": "v1",
+        "reason": "polite"
+    },
+    {
+        "suffix": "います",
+        "replacement": "う",
+        "type": "v5",
+        "reason": "polite"
+    },
+    {
+        "suffix": "きます",
+        "replacement": "く",
+        "type": "v5",
+        "reason": "polite"
+    },
+    {
+        "suffix": "ぎます",
+        "replacement": "ぐ",
+        "type": "v5",
+        "reason": "polite"
+    },
+    {
+        "suffix": "します",
+        "replacement": "す",
+        "type": "v5",
+        "reason": "polite"
+    },
+    {
+        "suffix": "ちます",
+        "replacement": "つ",
+        "type": "v5",
+        "reason": "polite"
+    },
+    {
+        "suffix": "にます",
+        "replacement": "ぬ",
+        "type": "v5",
+        "reason": "polite"
+    },
+    {
+        "suffix": "びます",
+        "replacement": "ぶ",
+        "type": "v5",
+        "reason": "polite"
+    },
+    {
+        "suffix": "みます",
+        "replacement": "む",
+        "type": "v5",
+        "reason": "polite"
+    },
+    {
+        "suffix": "ります",
+        "replacement": "る",
+        "type": "v5",
+        "reason": "polite"
+    },
+    {
+        "suffix": "じます",
+        "replacement": "ずる",
+        "type": "vz",
+        "reason": "polite"
+    },
+    {
+        "suffix": "します",
+        "replacement": "する",
+        "type": "vs",
+        "reason": "polite"
+    },
+    {
+        "suffix": "きます",
+        "replacement": "くる",
+        "type": "vk",
+        "reason": "polite"
+    },
+    {
+        "suffix": "て",
+        "replacement": "る",
+        "type": "v1",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "いて",
+        "replacement": "く",
+        "type": "v5",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "いで",
+        "replacement": "ぐ",
+        "type": "v5",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "して",
+        "replacement": "す",
+        "type": "v5",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "って",
+        "replacement": "う",
+        "type": "v5",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "って",
+        "replacement": "つ",
+        "type": "v5",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "って",
+        "replacement": "る",
+        "type": "v5",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "んで",
+        "replacement": "ぬ",
+        "type": "v5",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "んで",
+        "replacement": "ぶ",
+        "type": "v5",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "んで",
+        "replacement": "む",
+        "type": "v5",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "じて",
+        "replacement": "ずる",
+        "type": "vz",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "して",
+        "replacement": "する",
+        "type": "vs",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "きて",
+        "replacement": "くる",
+        "type": "vk",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "くて",
+        "replacement": "い",
+        "type": "adj-i",
+        "reason": "te-form"
+    },
+    {
+        "suffix": "た",
+        "replacement": "る",
+        "type": "v1",
+        "reason": "past"
+    },
+    {
+        "suffix": "いた",
+        "replacement": "く",
+        "type": "v5",
+        "reason": "past"
+    },
+    {
+        "suffix": "いだ",
+        "replacement": "ぐ",
+        "type": "v5",
+        "reason": "past"
+    },
+    {
+        "suffix": "した",
+        "replacement": "す",
+        "type": "v5",
+        "reason": "past"
+    },
+    {
+        "suffix": "った",
+        "replacement": "う",
+        "type": "v5",
+        "reason": "past"
+    },
+    {
+        "suffix": "った",
+        "replacement": "つ",
+        "type": "v5",
+        "reason": "past"
+    },
+    {
+        "suffix": "った",
+        "replacement": "る",
+        "type": "v5",
+        "reason": "past"
+    },
+    {
+        "suffix": "んだ",
+        "replacement": "ぬ",
+        "type": "v5",
+        "reason": "past"
+    },
+    {
+        "suffix": "んだ",
+        "replacement": "ぶ",
+        "type": "v5",
+        "reason": "past"
+    },
+    {
+        "suffix": "んだ",
+        "replacement": "む",
+        "type": "v5",
+        "reason": "past"
+    },
+    {
+        "suffix": "じた",
+        "replacement": "ずる",
+        "type": "vz",
+        "reason": "past"
+    },
+    {
+        "suffix": "した",
+        "replacement": "する",
+        "type": "vs",
+        "reason": "past"
+    },
+    {
+        "suffix": "きた",
+        "replacement": "くる",
+        "type": "vk",
+        "reason": "past"
+    },
+    {
+        "suffix": "かった",
+        "replacement": "い",
+        "type": "adj-i",
+        "reason": "past"
+    },
+    {
+        "suffix": "ない",
+        "replacement": "る",
+        "type": "v1",
+        "reason": "negative"
+    },
+    {
+        "suffix": "かない",
+        "replacement": "く",
+        "type": "v5",
+        "reason": "negative"
+    },
+    {
+        "suffix": "がない",
+        "replacement": "ぐ",
+        "type": "v5",
+        "reason": "negative"
+    },
+    {
+        "suffix": "さない",
+        "replacement": "す",
+        "type": "v5",
+        "reason": "negative"
+    },
+    {
+        "suffix": "たない",
+        "replacement": "つ",
+        "type": "v5",
+        "reason": "negative"
+    },
+    {
+        "suffix": "なない",
+        "replacement": "ぬ",
+        "type": "v5",
+        "reason": "negative"
+    },
+    {
+        "suffix": "ばない",
+        "replacement": "ぶ",
+        "type": "v5",
+        "reason": "negative"
+    },
+    {
+        "suffix": "まない",
+        "replacement": "む",
+        "type": "v5",
+        "reason": "negative"
+    },
+    {
+        "suffix": "らない",
+        "replacement": "る",
+        "type": "v5",
+        "reason": "negative"
+    },
+    {
+        "suffix": "わない",
+        "replacement": "う",
+        "type": "v5",
+        "reason": "negative"
+    },
+    {
+        "suffix": "じない",
+        "replacement": "ずる",
+        "type": "vz",
+        "reason": "negative"
+    },
+    {
+        "suffix": "しない",
+        "replacement": "する",
+        "type": "vs",
+        "reason": "negative"
+    },
+    {
+        "suffix": "こない",
+        "replacement": "くる",
+        "type": "vk",
+        "reason": "negative"
+    },
+    {
+        "suffix": "くない",
+        "replacement": "い",
+        "type": "adj-i",
+        "reason": "negative"
+    },
+    {
+        "suffix": "られる",
+        "replacement": "る",
+        "type": "v1",
+        "reason": "passive/potential"
+    },
+    {
+        "suffix": "れる",
+        "replacement": "う",
+        "type": "v5",
+        "reason": "passive/potential"
+    },
+    {
+        "suffix": "かれる",
+        "replacement": "く",
+        "type": "v5",
+        "reason": "passive"
+    },
+    {
+        "suffix": "がれる",
+        "replacement": "ぐ",
+        "type": "v5",
+        "reason": "passive"
+    },
+    {
+        "suffix": "される",
+        "replacement": "す",
+        "type": "v5",
+        "reason": "passive"
+    },
+    {
+        "suffix": "たれる",
+        "replacement": "つ",
+        "type": "v5",
+        "reason": "passive"
+    },
+    {
+        "suffix": "なれる",
+        "replacement": "ぬ",
+        "type": "v5",
+        "reason": "passive"
+    },
+    {
+        "suffix": "ばれる",
+        "replacement": "ぶ",
+        "type": "v5",
+        "reason": "passive"
+    },
+    {
+        "suffix": "まれる",
+        "replacement": "む",
+        "type": "v5",
+        "reason": "passive"
+    },
+    {
+        "suffix": "われる",
+        "replacement": "う",
+        "type": "v5",
+        "reason": "passive"
+    },
+    {
+        "suffix": "させる",
+        "replacement": "る",
+        "type": "v1",
+        "reason": "causative"
+    },
+    {
+        "suffix": "せる",
+        "replacement": "う",
+        "type": "v5",
+        "reason": "causative"
+    },
+    {
+        "suffix": "かせる",
+        "replacement": "く",
+        "type": "v5",
+        "reason": "causative"
+    },
+    {
+        "suffix": "がせる",
+        "replacement": "ぐ",
+        "type": "v5",
+        "reason": "causative"
+    },
+    {
+        "suffix": "させる",
+        "replacement": "す",
+        "type": "v5",
+        "reason": "causative"
+    },
+    {
+        "suffix": "たせる",
+        "replacement": "つ",
+        "type": "v5",
+        "reason": "causative"
+    },
+    {
+        "suffix": "なせる",
+        "replacement": "ぬ",
+        "type": "v5",
+        "reason": "causative"
+    },
+    {
+        "suffix": "ばせる",
+        "replacement": "ぶ",
+        "type": "v5",
+        "reason": "causative"
+    },
+    {
+        "suffix": "ませる",
+        "replacement": "む",
+        "type": "v5",
+        "reason": "causative"
+    },
+    {
+        "suffix": "らせる",
+        "replacement": "る",
+        "type": "v5",
+        "reason": "causative"
+    },
+    {
+        "suffix": "える",
+        "replacement": "う",
+        "type": "v5",
+        "reason": "potential"
+    },
+    {
+        "suffix": "ける",
+        "replacement": "く",
+        "type": "v5",
+        "reason": "potential"
+    },
+    {
+        "suffix": "げる",
+        "replacement": "ぐ",
+        "type": "v5",
+        "reason": "potential"
+    },
+    {
+        "suffix": "せる",
+        "replacement": "す",
+        "type": "v5",
+        "reason": "potential"
+    },
+    {
+        "suffix": "てる",
+        "replacement": "つ",
+        "type": "v5",
+        "reason": "potential"
+    },
+    {
+        "suffix": "ねる",
+        "replacement": "ぬ",
+        "type": "v5",
+        "reason": "potential"
+    },
+    {
+        "suffix": "べる",
+        "replacement": "ぶ",
+        "type": "v5",
+        "reason": "potential"
+    },
+    {
+        "suffix": "める",
+        "replacement": "む",
+        "type": "v5",
+        "reason": "potential"
+    },
+    {
+        "suffix": "れる",
+        "replacement": "る",
+        "type": "v5",
+        "reason": "potential"
+    },
+    {
+        "suffix": "ちゃう",
+        "replacement": "てしまう",
+        "type": "v5",
+        "reason": "slang-contraction"
+    },
+    {
+        "suffix": "ちゃ",
+        "replacement": "ては",
+        "type": "v1",
+        "reason": "slang-contraction"
+    },
+    {
+        "suffix": "じゃu",
+        "replacement": "でしまう",
+        "type": "v5",
+        "reason": "slang-contraction"
+    },
+    {
+        "suffix": "じゃ",
+        "replacement": "では",
+        "type": "v1",
+        "reason": "slang-contraction"
+    },
+    {
+        "suffix": "てる",
+        "replacement": "ている",
+        "type": "v1",
+        "reason": "slang-progressive"
+    },
+    {
+        "suffix": "でる",
+        "replacement": "でいる",
+        "type": "v1",
+        "reason": "slang-progressive"
+    },
+    {
+        "suffix": "とく",
+        "replacement": "ておく",
+        "type": "v5",
+        "reason": "slang-advance"
+    },
+    {
+        "suffix": "よう",
+        "replacement": "る",
+        "type": "v1",
+        "reason": "volitional"
+    },
+    {
+        "suffix": "おう",
+        "replacement": "う",
+        "type": "v5",
+        "reason": "volitional"
+    },
+    {
+        "suffix": "こう",
+        "replacement": "く",
+        "type": "v5",
+        "reason": "volitional"
+    },
+    {
+        "suffix": "ごう",
+        "replacement": "ぐ",
+        "type": "v5",
+        "reason": "volitional"
+    },
+    {
+        "suffix": "そう",
+        "replacement": "す",
+        "type": "v5",
+        "reason": "volitional"
+    },
+    {
+        "suffix": "とう",
+        "replacement": "つ",
+        "type": "v5",
+        "reason": "volitional"
+    },
+    {
+        "suffix": "のう",
+        "replacement": "ぬ",
+        "type": "v5",
+        "reason": "volitional"
+    },
+    {
+        "suffix": "ぼう",
+        "replacement": "ぶ",
+        "type": "v5",
+        "reason": "volitional"
+    },
+    {
+        "suffix": "もう",
+        "replacement": "む",
+        "type": "v5",
+        "reason": "volitional"
+    },
+    {
+        "suffix": "ろう",
+        "replacement": "る",
+        "type": "v5",
+        "reason": "volitional"
+    },
+    {
+        "suffix": "ろ",
+        "replacement": "る",
+        "type": "v1",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "よ",
+        "replacement": "る",
+        "type": "v1",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "え",
+        "replacement": "う",
+        "type": "v5",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "け",
+        "replacement": "く",
+        "type": "v5",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "げ",
+        "replacement": "ぐ",
+        "type": "v5",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "せ",
+        "replacement": "す",
+        "type": "v5",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "て",
+        "replacement": "つ",
+        "type": "v5",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "ね",
+        "replacement": "ぬ",
+        "type": "v5",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "べ",
+        "replacement": "ぶ",
+        "type": "v5",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "め",
+        "replacement": "む",
+        "type": "v5",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "れ",
+        "replacement": "る",
+        "type": "v5",
+        "reason": "imperative"
+    },
+    {
+        "suffix": "れば",
+        "replacement": "る",
+        "type": "v5",
+        "reason": "conditional"
+    },
+    {
+        "suffix": "ければ",
+        "replacement": "い",
+        "type": "adj-i",
+        "reason": "conditional"
+    },
+    {
+        "suffix": "な",
+        "replacement": "",
+        "type": "adj-na",
+        "reason": "na-adj-form"
+    },
+    {
+        "suffix": "だった",
+        "replacement": "",
+        "type": "adj-na/noun",
+        "reason": "copula-past"
+    },
+    {
+        "suffix": "じゃない",
+        "replacement": "",
+        "type": "adj-na/noun",
+        "reason": "copula-negative"
+    }
+]

@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: bitesize-backend
+  datasource:
+    url: ${DATABASE_URL:jdbc:h2:mem:testdb}
+    driver-class-name: ${DATABASE_DRIVER:org.h2.Driver}
+    username: ${DATABASE_USER:sa}
+    password: ${DATABASE_PASSWORD:}
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: ${DB_PLATFORM:org.hibernate.dialect.H2Dialect}
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URL:http://localhost:9200}
+  docker:
+    compose:
+      enabled: false
+
+server:
+  port: ${PORT:8081}
+
+jwt:
+  secret: ${JWT_SECRET:your-256-bit-secret-key-that-needs-to-be-secure-for-production-environment-only}
+  expiration: 86400000

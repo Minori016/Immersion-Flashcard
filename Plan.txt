@@ -1,0 +1,128 @@
+Lựa chọn mục tiêu là playlist "Bite size Japanese" (của The Sakura-chan) thực sự là một quyết định chiến lược xuất sắc cho đồ án của bạn.
+
+Thể loại podcast có lợi thế tuyệt đối: âm thanh cực kỳ rõ nét, ít tạp âm (so với anime), ngữ điệu giao tiếp đời thường tự nhiên, và đặc biệt là tỷ lệ phụ đề chính xác (kể cả auto-generated) rất cao. Khối lượng 600 video là một "Live Corpus" (kho ngữ liệu) vừa đủ lớn để hệ thống hoạt động hiệu quả, lại vừa đủ gọn để bạn xử lý toàn bộ trên máy cá nhân mà không cần server khủng.
+
+Để biến 600 video này thành một hệ thống tra cứu siêu tốc, quy trình triển khai cụ thể sẽ đi qua các bước sau:
+
+1. Giai đoạn 1: Khai thác dữ liệu (Data Extraction)
+Bạn không cần tải video về, chỉ cần rút toàn bộ phụ đề.
+
+Công cụ: Sử dụng một đoạn script Python nhỏ với thư viện youtube-transcript-api và yt-dlp.
+
+Quy trình:
+
+Truyền Playlist ID (PLQcOOIxIw8dIZFPPnHzSBoCFXVPqBhYjP) vào yt-dlp để lấy danh sách 600 Video ID.
+
+Vòng lặp chạy qua 600 ID này, gọi youtube-transcript-api để kéo phụ đề tiếng Nhật về.
+
+Kết quả thu được là một mảng JSON khổng lồ, mỗi phần tử gồm: video_id, text (đoạn hội thoại), start (giây bắt đầu), duration (thời lượng).
+
+2. Giai đoạn 2: Giải quyết "Cơn ác mộng" Xử lý Tiếng Nhật (NLP)
+Đây là phần ăn điểm nhất trong đồ án kiến trúc phần mềm. Tiếng Nhật không sử dụng dấu cách (space) giữa các từ, và một động từ có hàng chục cách chia (ví dụ: muốn tra 食べる nhưng trong video lại nói 食べている hoặc 食べなかった).
+
+Giải pháp: Bắt buộc phải đưa dữ liệu qua một bộ Morphological Analyzer (Phân tích hình thái) trước khi lưu.
+
+Tích hợp Backend: Trong kiến trúc Java (Spring Boot), bạn có thể nhúng thư viện Kuromoji. Khi nhận một dòng phụ đề, Kuromoji sẽ tự động tách câu thành các từ đơn, chuyển đổi mọi thể chia của động từ/tính từ về thể từ điển (Dictionary form - nguyên dạng), đồng thời bóc tách riêng phần Kanji và Hiragana.
+
+3. Giai đoạn 3: Indexing & Tìm kiếm siêu tốc
+Việc lưu trữ 600 video (khoảng hàng chục ngàn dòng phụ đề) vào các bảng RDBMS truyền thống và dùng truy vấn LIKE sẽ làm mất đi tính chuyên nghiệp của hệ thống tìm kiếm ngữ nghĩa.
+
+Công cụ tối ưu: Đưa toàn bộ dữ liệu đã bóc tách vào Elasticsearch.
+
+Elasticsearch đã có sẵn plugin hỗ trợ tiếng Nhật (tích hợp Kuromoji). Nhờ thuật toán Inverted Index, khi bạn gõ một từ vựng, hệ thống sẽ rà soát hàng vạn dòng phụ đề của 600 video và trả về kết quả chỉ trong khoảng 10-20 mili-giây.
+
+4. Giai đoạn 4: UI/UX & Tích hợp Trình phát (Playback)
+Khi đã có video_id và mốc thời gian start, phần hiển thị sẽ là mảnh đất để bạn "flex" kỹ năng.
+
+Youtube IFrame API: Trên Frontend, bạn nhúng trình phát mặc định của YouTube. Khi người dùng click vào một câu ví dụ, bạn gọi lệnh player.seekTo(start_time - 2). Việc trừ đi 2 giây giúp người học có khoảng "đà" để nghe trọn vẹn ngữ cảnh trước khi từ vựng đó thực sự được phát âm ra.
+
+Định hình Thẩm mỹ: Để tránh giao diện dạng danh sách tĩnh đơn điệu, bạn có thể thiết kế các thẻ kết quả tra cứu với bố cục bất đối xứng, phối màu tương phản mạnh và các khối hộp cắt chéo. Một hệ thống UI mang đậm ngôn ngữ thiết kế của các dòng game JRPG như Persona 5 hoặc Metaphor: ReFantazio sẽ biến trải nghiệm tra từ khô khan trở nên bùng nổ về mặt thị giác, đồng thời giấu đi hoàn toàn cảm giác chờ đợi (nếu có) khi load IFrame video.
+
+Với hướng đi này, hệ thống của bạn hoàn toàn tự chủ. Khi muốn mở rộng dữ liệu, bạn chỉ việc ném thêm link một playlist YouTube bất kỳ (như vlog của Aoki Saki chẳng hạn), script chạy ngầm sẽ tự động tải phụ đề, phân tích Kuromoji và đưa vào Elasticsearch.
+
+Bạn muốn bắt tay vào việc thiết lập script Python để cào phụ đề trước, hay muốn thiết kế cấu trúc Index cho Elasticsearch trên backend Spring Boot để chuẩn bị đón dữ liệu?
+
+
+PHẦN 1: TỔNG QUAN KIẾN TRÚC HỆ THỐNG (SYSTEM ARCHITECTURE)
+Thay vì một khối Monolithic khổng lồ, hệ thống sẽ được chia thành 2 module hoạt động độc lập để đảm bảo hiệu năng tối đa trên cỗ máy Lenovo Legion 5 tiêu chuẩn của bạn.
+
+Module 1: Data Pipeline (Python)
+
+Nhiệm vụ: Kéo 600 video từ playlist, bóc tách phụ đề .srt, làm sạch dữ liệu và xuất ra file JSON chuẩn hóa.
+
+Lý do: Python sở hữu hệ sinh thái cực mạnh cho việc crawl dữ liệu (yt-dlp, youtube-transcript-api).
+
+Module 2: Core Backend (Java Spring Boot) & Search Engine (Elasticsearch)
+
+Nhiệm vụ: Nhận file JSON, chạy qua bộ phân tích hình thái Kuromoji để tách từ, chuyển về thể nguyên dạng (Dictionary form), sau đó Index vào Elasticsearch. Cung cấp RESTful APIs cho Frontend tra cứu.
+
+Lý do: Tận dụng tối đa sức mạnh của Spring Boot trong việc quản lý luồng dữ liệu và thiết kế API chuẩn chỉnh.
+
+Module 3: Frontend & Playback UI (JavaScript/React/Vue)
+
+Nhiệm vụ: Giao tiếp với Backend, hiển thị kết quả siêu tốc, nhúng YouTube IFrame API để nhảy đúng timestamp.
+
+PHẦN 2: LỘ TRÌNH TRIỂN KHAI CHI TIẾT (5 GIAI ĐOẠN)
+Giai đoạn 1: Data Preparation & Mining (Tuần 1)
+Đây là bước thu thập "nguyên liệu" cốt lõi.
+
+Viết Script Crawler: Dùng Python gọi youtube-transcript-api với Input là ID của playlist Bite Size Japanese.
+
+Chuẩn hóa cấu trúc dữ liệu: Mỗi dòng phụ đề sẽ được map thành một Object:
+
+JSON
+
+{
+  "video_id": "T6KY40nsVUI",
+  "start_time": 12.5,
+  "duration": 3.0,
+  "text_raw": "美味しいものを食べている"
+}
+Xử lý ngoại lệ: Viết code bỏ qua các video không có phụ đề tiếng Nhật (nếu có) hoặc phụ đề bị lỗi mốc thời gian.
+
+Giai đoạn 2: NLP & Indexing với Spring Boot (Tuần 2)
+Phần lõi kỹ thuật phức tạp nhất để giải quyết đặc thù của tiếng Nhật.
+
+Tích hợp Kuromoji vào Java: Đưa đoạn text_raw qua Kuromoji.
+
+Input: 食べている (Đang ăn).
+
+Output phân tích: 食べる (Động từ nguyên dạng) + て + いる.
+
+Thiết kế Index trên Elasticsearch:
+
+Tạo index subtitles với custom analyzer sử dụng Kuromoji. Điều này đảm bảo khi người dùng gõ 食べる (taberu), hệ thống vẫn match được câu có chứa 食べた (tabeta) hoặc 食べている (tabeteiru).
+
+Viết API Ingest: Spring Boot đọc mảng JSON từ Giai đoạn 1, gán thêm thuộc tính text_base_form (từ nguyên dạng đã bóc tách) và đẩy toàn bộ (Bulk Insert) vào Elasticsearch.
+
+Giai đoạn 3: Xây dựng Search API & Cấu trúc Dữ liệu (Tuần 3)
+Thiết kế Endpoint Tra cứu: Tạo API GET /api/v1/search?q={từ_vựng}.
+
+Tối ưu Query: Sử dụng Elasticsearch Query DSL để tìm kiếm chính xác (Match Phrase) kết hợp với tìm kiếm mờ (Fuzzy Search) để bao quát cả Kanji và Hiragana.
+
+Pagination: Giới hạn trả về 10-20 kết quả đầu tiên mỗi lần gọi để tối ưu băng thông.
+
+Giai đoạn 4: UI/UX & Tích hợp YouTube Playback (Tuần 4)
+Đưa triết lý thiết kế hình ảnh sắc nét vào dự án để thoát khỏi giao diện web truyền thống.
+
+Tích hợp Trình phát: Sử dụng YouTube IFrame Player API. Khi API trả về kết quả, truyền video_id vào IFrame và gọi lệnh player.seekTo(start_time - 1).
+
+Định hình Thẩm mỹ (UI/UX):
+
+Sử dụng bảng màu đỏ/đen tương phản mạnh hoặc các mảng màu rực rỡ, giao diện cắt chéo bất đối xứng mang âm hưởng của các JRPG hàng đầu.
+
+Sử dụng phông chữ dày, sắc nét cho phần hiển thị Kanji.
+
+Bố cục: Chia đôi màn hình. Một bên là Trình phát Video (cố định), một bên là danh sách các thẻ câu ví dụ có thể cuộn độc lập. Khi click vào thẻ nào, video lập tức chuyển cảnh (Transition) mượt mà sang đoạn đó.
+
+Giai đoạn 5: Testing & Hoàn thiện (Tuần 5)
+Bảo đảm chất lượng (QA): Viết Unit Test cho các service cốt lõi trong Spring Boot (đặc biệt là service xử lý chuỗi Kuromoji). Mục tiêu đạt độ phủ (Statement & Branch Coverage) trên 85% để minh chứng kỹ năng thiết kế test case.
+
+Xử lý Edge Cases: Test các trường hợp từ vựng quá ngắn (như trợ từ は, が - thường sẽ trả về quá nhiều kết quả rác), thiết lập bộ lọc (Stop-words) để loại bỏ chúng khỏi bộ đếm tìm kiếm.
+
+TỔNG KẾT TÀI NGUYÊN CẦN THIẾT
+Môi trường: Java 17+, Python 3.10+, Node.js (cho Frontend).
+
+Database/Engine: Elasticsearch (chạy qua Docker Desktop trên máy).
+
+Thư viện lõi: Spring Data Elasticsearch, Kuromoji (Kuromoji-core), youtube-transcript-api.

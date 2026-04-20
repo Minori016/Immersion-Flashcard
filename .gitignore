@@ -1,0 +1,28 @@
+# Java
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Node
+node_modules/
+dist/
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Local data
+raw_transcripts/
+immersion_kit_data/
+*.log
+run_log.txt
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
